@@ -1,10 +1,9 @@
-.github/workflows/security-scan.yml
 name: Security Scan (OWASP ZAP)
 
 on:
-  workflow_dispatch:   # lets you run it manually
+  workflow_dispatch: {}
   schedule:
-    - cron: "0 3 * * 1"  # runs every Monday at 3 AM UTC
+    - cron: '0 3 * * 1' # every Monday at 03:00 UTC
 
 jobs:
   zap_scan:
@@ -16,12 +15,12 @@ jobs:
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.9.0
         with:
-          target: "https://firekirin.xyz:8680"
-          rules_file_name: ".zap/rules.tsv"
-          cmd_options: "-a"
+          target: 'https://your-domain-or-ip:8680'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
 
       - name: Upload ZAP Report
         uses: actions/upload-artifact@v4
         with:
           name: zap-report
-          path: zap_scan.html
+          path: ./zap_report.html
