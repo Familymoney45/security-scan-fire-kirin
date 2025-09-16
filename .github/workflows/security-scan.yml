@@ -15,7 +15,7 @@ jobs:
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.9.0
         with:
-          target: 'https://your-domain-or-ip:8680'
+          target: 'https://firekirin.xyz:8680'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
 
